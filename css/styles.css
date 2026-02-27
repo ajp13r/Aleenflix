@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #E50914;
+  --dark-red: #b20710;
+  --black: #141414;
+  --surface: #1a1a1a;
+  --surface2: #222;
+  --text: #e5e5e5;
+  --muted: #777;
+  --nav-h: 68px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+  transition: background 0.3s;
+}
+
+nav.scrolled {
+  background: rgba(20,20,20,0.97);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.nav-left { display: flex; align-items: center; gap: 32px; }
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: var(--red);
+  letter-spacing: 2px;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-links { display: flex; gap: 20px; list-style: none; }
+
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: #fff; }
+.nav-links a.active::after { transform: scaleX(1); }
+
+.nav-right { display: flex; align-items: center; gap: 20px; }
+
+.nav-icon {
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+  background: none; border: none;
+  padding: 4px;
+}
+.nav-icon:hover { color: #fff; }
+
+.avatar {
+  width: 34px; height: 34px;
+  background: var(--red);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  transition: opacity 0.2s;
+}
+.avatar:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 90vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 48px 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--black) 0%, transparent 50%),
+    linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 60%),
+    url('../img/wallpaper.png') center/cover no-repeat;
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  animation: heroFade 1s ease-out 0.3s both;
+}
+
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  margin-bottom: 18px;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 28px;
+  max-width: 440px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.match { color: #46d369; font-weight: 700; }
+.rating-badge {
+  border: 1px solid #777;
+  padding: 1px 6px;
+  font-size: 0.75rem;
+}
+
+.hero-actions { display: flex; gap: 12px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-play {
+  background: #fff;
+  color: #000;
+}
+.btn-play:hover { background: rgba(255,255,255,0.8); }
+
+.btn-info {
+  background: rgba(109,109,110,0.7);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+.btn-info:hover { background: rgba(109,109,110,0.5); }
+
+/* ── CONTENT ROWS ── */
+.content-section { padding: 0 48px 48px; }
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: #e5e5e5;
+  margin-bottom: 18px;
+}
+
+.section-title span {
+  color: var(--red);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+}
+.row::-webkit-scrollbar { display: none; }
+
+/* ── CARDS ── */
+.card {
+  flex: 0 0 220px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s, z-index 0s;
+  background: var(--surface);
+}
+
+.card:hover {
+  transform: scale(1.08);
+  z-index: 10;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s;
+}
+
+.card:hover img { filter: brightness(0.4); }
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%);
+}
+
+.card:hover .card-overlay { opacity: 1; }
+
+.card-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.card-match { color: #46d369; font-weight: 700; }
+
+.card-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.card-btn {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 2px solid #aaa;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.card-btn.play-btn {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+.card-btn:hover { border-color: #fff; }
+
+/* ── WIDE CARDS (landscape) ── */
+.wide-card {
+  flex: 0 0 300px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s;
+  background: var(--surface);
+}
+.wide-card:hover { transform: scale(1.05); box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+.wide-card img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+.wide-card-info {
+  padding: 10px 12px;
+}
+.wide-card-info .card-title { font-size: 0.85rem; margin-bottom: 4px; }
+.wide-card-info .card-info { font-size: 0.75rem; }
+
+/* ── TOP 10 ── */
+.top10-card {
+  flex: 0 0 260px;
+  border-radius: 6px;
+  overflow: visible;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+.top10-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10rem;
+  color: var(--black);
+  -webkit-text-stroke: 3px #555;
+  line-height: 1;
+  margin-right: -20px;
+  z-index: 2;
+  user-select: none;
+}
+.top10-img {
+  flex: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: -10px 10px 30px rgba(0,0,0,0.6);
+  transition: transform 0.3s;
+}
+.top10-card:hover .top10-img { transform: scale(1.06); }
+.top10-img img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 60px 48px 40px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  max-width: 1000px;
+}
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #e5e5e5; }
+.footer-service {
+  border: 1px solid var(--muted);
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.footer-service:hover { border-color: #e5e5e5; color: #e5e5e5; }
+
+/* ── PAGE SECTIONS ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* TV Shows / Movies page hero variation */
+.browse-hero {
+  height: 50vh;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  margin-top: var(--nav-h);
+  position: relative;
+  overflow: hidden;
+}
+
+.browse-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.85), transparent 60%),
+              linear-gradient(to top, var(--black), transparent 60%);
+  z-index: 1;
+}
+.browse-hero img.bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.browse-hero-content { position: relative; z-index: 2; }
+.browse-hero h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/* Genre pills */
+.genre-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 48px;
+}
+.pill {
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid #555;
+  background: rgba(255,255,255,0.05);
+  color: #ccc;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Barlow', sans-serif;
+}
+.pill:hover, .pill.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* ── MY LIST PAGE ── */
+.mylist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 24px 48px 80px;
+}
+
+/* ── SEARCH ── */
+.search-section {
+  padding: 24px 48px 80px;
+  margin-top: var(--nav-h);
+}
+.search-bar-wrap {
+  position: relative;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+.search-bar-wrap input {
+  width: 100%;
+  padding: 14px 14px 14px 48px;
+  background: var(--surface2);
+  border: 2px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Barlow', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-bar-wrap input:focus { border-color: var(--red); }
+.search-bar-wrap .search-icon {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+.trending-section .section-title { font-size: 1.3rem; margin-bottom: 16px; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero, .content-section, .footer, .browse-hero, .genre-pills, .mylist-grid, .search-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hero h1 { font-size: 2.5rem; }
+  .card { flex: 0 0 150px; }
+  .wide-card { flex: 0 0 220px; }
+  .footer-links { grid-template-columns: repeat(2,1fr); }
+}
