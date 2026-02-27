@@ -99,11 +99,11 @@
 <!-- ─────────────────── TV SHOWS PAGE ─────────────────── -->
 <div id="tvshows" class="page">
   <div class="browse-hero">
-    <img class="bg-img" src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=1200&q=80" alt="TV Shows" />
+    <img class="bg-img" src="img/16.jpg" alt="TV Shows" />
     <div class="browse-hero-bg"></div>
     <div class="browse-hero-content">
       <h2>TV Shows</h2>
-      <p style="color:#ccc; max-width:400px;">Binge-worthy series, gripping dramas, and laugh-out-loud comedies.</p>
+      <p style="color:#ccc; max-width:400px;">Honestly nothing good to watch here except BRIDGERTONNN</p>
     </div>
   </div>
   <div class="genre-pills">
@@ -134,7 +134,7 @@
     <div class="browse-hero-bg"></div>
     <div class="browse-hero-content">
       <h2>Movies</h2>
-      <p style="color:#ccc; max-width:400px;">Action blockbusters, indie gems, and critically acclaimed films.</p>
+      <p style="color:#ccc; max-width:400px;">Action blockbusters deez nuts</p>
     </div>
   </div>
   <div class="genre-pills">
@@ -206,7 +206,6 @@
     { title: "Fentyyy",    year: 2024, match: "97%", rating: "TV-MA", genre: "Thriller",
       img: "img/IMG_3638.jpg" },
     { title: "Side Eye of Doom",      year: 2025, match: "94%", rating: "TV-14", genre: "Drama",
-      //img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" },
       img: "img/IMG_7989.JPG" },
     { title: "Sesame Block",  year: 2024, match: "91%", rating: "TV-MA", genre: "Sci-Fi",
       img: "img/File_001.png" },
@@ -227,7 +226,31 @@
     { title: "Dickhead",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
       img: "img/File_003.png" },
     { title: "Global Citizen",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
-      img: "img/g1.png" },
+      img: "img/IMG_3173.jpg" },
+    { title: "Halloween Partay",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/3.png" },
+    { title: "Plotting",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/4.png" },
+    { title: "Pokemoner",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/5.png" },
+    { title: "Awkward",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/6.png" },
+    { title: "They/Them?",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/9.jpg" },
+    { title: "They/Them Part 2",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/10.jpg" },
+    { title: "Fam",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/12.jpg" },
+    { title: "Mirror Mirror on The Wall",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/16.jpg" },
+    { title: "Buzzy",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/21.jpg" },
+    { title: "The Thunker",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/22.jpg" },
+    { title: "Flashback",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/23.jpg" },
+    { title: "Madam Lori",     year: 2025, match: "92%", rating: "TV-MA", genre: "Drama",
+      img: "img/l2.png" },
   ];
 
   const wideImgs = [
@@ -294,19 +317,19 @@
   // ── Populate rows ─────────────────────────────────────────────────────────
   const s = shuffle(shows);
   populate('#home .row', s.slice(0, 8));
-  populate('#home .top10-row', s.slice(0, 8), 'top10');
-  populate('#home .wide-row', s.slice(0, 6), 'wide');
-  populate('#home .row2', shuffle(shows).slice(0, 8));
+  populate('#home .top10-row', s.slice(8, 16), 'top10');
+  populate('#home .wide-row', s.slice(16, 22), 'wide');
+  populate('#home .row2', shuffle(shows).slice(0, 24));
 
-  populate('#tvshows .tv-row1', shuffle(shows).slice(0, 8));
-  populate('#tvshows .tv-row2', shuffle(shows).slice(0, 8));
+  populate('#tvshows .tv-row1', shuffle(shows).slice(0, 12));
+  populate('#tvshows .tv-row2', shuffle(shows).slice(12, 24));
 
-  populate('#movies .movies-row1', shuffle(shows).slice(0, 8));
-  populate('#movies .movies-row2', shuffle(shows).slice(0, 8));
+  populate('#movies .movies-row1', shuffle(shows).slice(0, 12));
+  populate('#movies .movies-row2', shuffle(shows).slice(12, 24));
 
   populate('#new .new-row1', shuffle(shows).slice(0, 8));
-  populate('#new .new-row2', shuffle(shows).slice(0, 8));
-  populate('#new .new-row3', shuffle(shows).slice(0, 8));
+  populate('#new .new-row2', shuffle(shows).slice(8, 16));
+  populate('#new .new-row3', shuffle(shows).slice(16, 24));
 
   // My List grid
   const mylistEl = document.querySelector('.mylist-grid');
