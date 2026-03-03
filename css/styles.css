@@ -105,6 +105,10 @@ nav.scrolled {
 }
 .avatar:hover { opacity: 0.85; }
 
+#notificationsButton a {
+  text-decoration: none;
+}
+
 /* ── HERO ── */
 .hero {
   position: relative;
@@ -541,4 +545,9 @@ footer {
   .card { flex: 0 0 150px; }
   .wide-card { flex: 0 0 220px; }
   .footer-links { grid-template-columns: repeat(2,1fr); }
+}
+
+/* Audio */
+audio {
+  display: none;
 }

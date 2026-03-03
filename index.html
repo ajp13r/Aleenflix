@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aleenflix</title>
   <link rel="stylesheet" href="css/styles.css" />
+  
 </head>
 
 <body>
@@ -24,10 +25,11 @@
     </div>
     <div class="nav-right">
       <button class="nav-icon" id="searchToggle" title="Search">🔍</button>
-      <button class="nav-icon" title="Notifications">🔔</button>
+      <button class="nav-icon" title="Notifications" id="notificationsButton"><a href="https://www.youtube.com/watch?v=xMHJGd3wwZk&list=RDxMHJGd3wwZk&start_radio=1">🥚</a></button>
       <div class="avatar" title="Profile">AP</div>
     </div>
   </nav>
+  
 
   <!-- ─────────────────── HOME PAGE ─────────────────── -->
   <div id="home" class="page active">
@@ -39,7 +41,7 @@
         <span class="hero-badge">🎬 Featured Film</span>
         <h1>The<br />Gang</h1>
         <div class="hero-meta">
-          <span class="match">98% Match</span>
+          <span class="match">100% Match</span>
           <span>2026</span>
           <span class="rating-badge">TV-MA</span>
           <span>2h 24m</span>
@@ -47,11 +49,15 @@
         <p>I'm bored and had nothing else to do so here's a website I pulled out my big booty - If I have pictures of
           you.. very high chance you are in here YUHH</p>
         <div class="hero-actions">
-          <button class="btn btn-play">▶ Play</button>
-          <button class="btn btn-info">ℹ More Info</button>
+          <audio id="attentionAudio" src="songs/attention.mp3"></audio>
+          <button class="btn btn-play" id="playButton">▶ Play</button>
+          <button class="btn btn-info">ℹ More Info</button> 
         </div>
+        <br>
+        
       </div>
     </section>
+    
 
     <!-- TRENDING NOW -->
     <section class="content-section">
@@ -305,17 +311,17 @@
     ];
 
     const wideImgs = [
-      { title: "Big Dubs", match: "97%", genre: "Thriller", 
+      { title: "Big Dubs", match: "100%", genre: "Winners", 
         img: "img/8.jpg" },
       { title: "RAH", match: "94%", genre: "Drama", 
         img: "img/14.jpg" },
       { title: "Goner", match: "91%", genre: "Comedy",
         img: "img/31.JPG" },
-      { title: "Good Times", match: "95%", genre: "Romance", 
+      { title: "Good Times", match: "95%", genre: "Slice of Life", 
         img: "img/l1.png" },
-      { title: "Conjurer", match: "88%", genre: "Action", 
+      { title: "Conjurer", match: "88%", genre: "Horror", 
         img: "img/p1.JPG" },
-      { title: "The Brits", match: "93%", genre: "Mystery", 
+      { title: "The Brits", match: "93%", genre: "Action", 
         img: "img/p3.JPG" },
     ];
 
@@ -438,6 +444,7 @@
       navbar.classList.toggle('scrolled', window.scrollY > 20);
     });
   </script>
+  <script src="js/playSong.js"></script>
 </body>
 
 </html>
