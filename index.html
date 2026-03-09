@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aleenflix</title>
   <link rel="stylesheet" href="css/styles.css" />
-  
+
 </head>
 
 <body>
@@ -15,6 +15,7 @@
   <nav id="navbar">
     <div class="nav-left">
       <a class="logo" href="#">ALEENFLIX</a>
+      <button class="hamburger" id="hamburger">☰</button>
       <ul class="nav-links">
         <li><a href="#" class="active" data-page="home">Home</a></li>
         <li><a href="#" data-page="tvshows">TV Shows</a></li>
@@ -25,11 +26,12 @@
     </div>
     <div class="nav-right">
       <button class="nav-icon" id="searchToggle" title="Search">🔍</button>
-      <button class="nav-icon" title="Notifications" id="notificationsButton"><a href="https://www.youtube.com/watch?v=xMHJGd3wwZk&list=RDxMHJGd3wwZk&start_radio=1">🥚</a></button>
+      <button class="nav-icon" title="Notifications" id="notificationsButton"><a
+          href="https://www.youtube.com/watch?v=xMHJGd3wwZk&list=RDxMHJGd3wwZk&start_radio=1">🥚</a></button>
       <div class="avatar" title="Profile">AP</div>
     </div>
   </nav>
-  
+
 
   <!-- ─────────────────── HOME PAGE ─────────────────── -->
   <div id="home" class="page active">
@@ -51,13 +53,13 @@
         <div class="hero-actions">
           <audio id="attentionAudio" src="songs/attention.mp3"></audio>
           <button class="btn btn-play" id="playButton">▶ Play</button>
-          <button class="btn btn-info">ℹ More Info</button> 
+          <button class="btn btn-info">ℹ More Info</button>
         </div>
         <br>
-        
+
       </div>
     </section>
-    
+
 
     <!-- TRENDING NOW -->
     <section class="content-section">
@@ -108,7 +110,9 @@
   <!-- ─────────────────── TV SHOWS PAGE ─────────────────── -->
   <div id="tvshows" class="page">
     <div class="browse-hero">
-      <img class="bg-img" src="https://imgs.search.brave.com/EL9wpgHH00A5417UNpvnHUFfLIqXQfFt2m8R2qOhO0Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNzEv/MTI4LzU1OS9zbWFs/bC92b2ljZS1yZWNv/Z25pdGlvbi1zb2Z0/d2FyZS1pY29uLWds/b3dpbmctb24tZGFy/ay1iYWNrZ3JvdW5k/LXBob3RvLmpwZw" alt="TV Shows" />
+      <img class="bg-img"
+        src="https://imgs.search.brave.com/EL9wpgHH00A5417UNpvnHUFfLIqXQfFt2m8R2qOhO0Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNzEv/MTI4LzU1OS9zbWFs/bC92b2ljZS1yZWNv/Z25pdGlvbi1zb2Z0/d2FyZS1pY29uLWds/b3dpbmctb24tZGFy/ay1iYWNrZ3JvdW5k/LXBob3RvLmpwZw"
+        alt="TV Shows" />
       <div class="browse-hero-bg"></div>
       <div class="browse-hero-content">
         <h2>TV Shows</h2>
@@ -311,18 +315,30 @@
     ];
 
     const wideImgs = [
-      { title: "Big Dubs", match: "100%", genre: "Winners", 
-        img: "img/8.jpg" },
-      { title: "RAH", match: "94%", genre: "Drama", 
-        img: "img/14.jpg" },
-      { title: "Goner", match: "91%", genre: "Comedy",
-        img: "img/31.JPG" },
-      { title: "Good Times", match: "95%", genre: "Slice of Life", 
-        img: "img/l1.png" },
-      { title: "Conjurer", match: "88%", genre: "Horror", 
-        img: "img/p1.JPG" },
-      { title: "The Brits", match: "93%", genre: "Action", 
-        img: "img/p3.JPG" },
+      {
+        title: "Big Dubs", match: "100%", genre: "Winners",
+        img: "img/8.jpg"
+      },
+      {
+        title: "RAH", match: "94%", genre: "Drama",
+        img: "img/14.jpg"
+      },
+      {
+        title: "Goner", match: "91%", genre: "Comedy",
+        img: "img/31.JPG"
+      },
+      {
+        title: "Good Times", match: "95%", genre: "Slice of Life",
+        img: "img/l1.png"
+      },
+      {
+        title: "Conjurer", match: "88%", genre: "Horror",
+        img: "img/p1.JPG"
+      },
+      {
+        title: "The Brits", match: "93%", genre: "Action",
+        img: "img/p3.JPG"
+      },
     ];
 
     // ── Helpers ───────────────────────────────────────────────────────────────
@@ -442,6 +458,17 @@
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
     });
   </script>
   <script src="js/playSong.js"></script>
